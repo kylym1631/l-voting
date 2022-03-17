@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateIdeasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('category_id')->constrained();
+            $table->foreignId('status_id')->constrained();
             $table->string('title');
             $table->string('slug')->nullable();
             $table->text('description');
@@ -33,4 +34,4 @@ return new class extends Migration
     {
         Schema::dropIfExists('ideas');
     }
-};
+}

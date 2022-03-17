@@ -30,11 +30,16 @@
         @foreach ($ideas as $idea)
             <div
                 x-data
-                @click="const target = $event.target.tagName.toLowerCase()
-        const ignores = ['button','svg','path','a', 'img']
-        const ideaLink = $event.target.closest('.idea-container').querySelector('.idea-link')
+                @click="
+                    const clicked = $event.target
+                    const target = clicked.tagName.toLowerCase()
 
-        !ignores.includes(target) && ideaLink.click()"
+                    const ignores = ['button', 'svg', 'path', 'a']
+
+                    if (! ignores.includes(target)) {
+                        clicked.closest('.idea-container').querySelector('.idea-link').click()
+                    }
+                "
                 class="idea-container hover:shadow-card transition duration-150 ease-in bg-white rounded-xl flex cursor-pointer"
             >
                 <div class="hidden md:block border-r border-gray-100 px-5 py-8">
@@ -51,7 +56,6 @@
                     <div class="flex-none mx-2 md:mx-0">
                         <a href="#">
                             <img src="{{ $idea->user->getAvatar() }}" alt="avatar" class="w-14 h-14 rounded-xl">
-
                         </a>
                     </div>
                     <div class="w-full flex flex-col justify-between mx-2 md:mx-4">
@@ -66,7 +70,7 @@
                             <div class="flex items-center text-xs text-gray-400 font-semibold space-x-2">
                                 <div>{{ $idea->created_at->diffForHumans() }}</div>
                                 <div>&bull;</div>
-                                <div>{{$idea->category->name}}</div>
+                                <div>{{ $idea->category->name }}</div>
                                 <div>&bull;</div>
                                 <div class="text-gray-900">3 Comments</div>
                             </div>
@@ -74,7 +78,7 @@
                                 x-data="{ isOpen: false }"
                                 class="flex items-center space-x-2 mt-4 md:mt-0"
                             >
-                                <div class="bg-gray-200 text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4">Open</div>
+                                <div class="{{ $idea->status->classes }} text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4">{{ $idea->status->name }}</div>
                                 <button
                                     @click="isOpen = !isOpen"
                                     class="relative bg-gray-100 hover:bg-gray-200 border rounded-full h-7 transition duration-150 ease-in py-2 px-3"

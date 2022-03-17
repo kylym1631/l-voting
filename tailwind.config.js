@@ -11,18 +11,19 @@ module.exports = {
     theme: {
         extend: {
             colors:{
-                    current: colors.current,
-                    transparent: colors.transparent,
-                    black: colors.black,
-                    white: colors.white,
-                    gray: colors.trueGray,
-                    'gray-background': '#f7f8fc',
-                    'blue':'#328af1',
-                    'blue-hover': '#2879bd',
-                    'yellow': '#ffc73c',
-                    'red': '#ec454f',
-                    'green': '#1aab8b',
-                    'purple': '#8b60ed',
+                transparent: 'transparent',
+                current: 'currentColor',
+
+                black: colors.black,
+                white: colors.white,
+                gray: colors.neutral,
+                'gray-background': '#f7f8fc',
+                'blue': '#328af1',
+                'blue-hover': '#2879bd',
+                'yellow' : '#ffc73c',
+                'red' : '#ec454f',
+                'green' : '#1aab8b',
+                'purple' : '#8b60ed',
             },
             spacing:{
                 22:'5.5rem',
@@ -47,9 +48,26 @@ module.exports = {
             }
         },
     },
+    variants: {
+        extend: {
+            opacity: ['disabled'],
+        },
+    },
 
     plugins: [
         require('@tailwindcss/forms'),
         require('@tailwindcss/line-clamp'),
     ],
+    purge: {
+        content: [
+            './storage/framework/views/*.php',
+            './resources/**/*.blade.php',
+        ],
+        safelist: [
+            'bg-purple',
+            'bg-yellow',
+            'bg-green',
+            'bg-red',
+        ],
+    },
 };
