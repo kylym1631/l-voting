@@ -1289,6 +1289,10 @@ select {
   --tw-text-opacity: 1;
   color: rgb(23 23 23 / var(--tw-text-opacity));
 }
+.text-blue {
+  --tw-text-opacity: 1;
+  color: rgb(50 138 241 / var(--tw-text-opacity));
+}
 .text-purple {
   --tw-text-opacity: 1;
   color: rgb(139 96 237 / var(--tw-text-opacity));
@@ -1308,10 +1312,6 @@ select {
 .text-indigo-700 {
   --tw-text-opacity: 1;
   color: rgb(67 56 202 / var(--tw-text-opacity));
-}
-.text-blue {
-  --tw-text-opacity: 1;
-  color: rgb(50 138 241 / var(--tw-text-opacity));
 }
 .underline {
   -webkit-text-decoration-line: underline;
