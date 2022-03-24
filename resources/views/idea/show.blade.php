@@ -1,18 +1,18 @@
 <x-app-layout>
     <div>
-        <a href="/" class="flex items-center font-semibold hover:underline">
+        <a href="{{ $backUrl }}" class="flex items-center font-semibold hover:underline">
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
             </svg>
-            <span class="ml-2">All ideas</span>
+            <span class="ml-2">All ideas (or back to chosen category with filters)</span>
         </a>
     </div>
 
     <livewire:idea-show
         :idea="$idea"
-        :votesCount="$votesCount" />
+        :votesCount="$votesCount"
+    />
 
-xw
     <div class="comments-container relative space-y-6 md:ml-22 pt-4 my-8 mt-1">
         <div class="comment-container relative bg-white rounded-xl flex mt-4">
             <div class="flex flex-col md:flex-row flex-1 px-4 py-6">
